@@ -5,6 +5,33 @@ let previousNumber = "";
 let operator = "";
 let decimalPoint = false;
 
+document.addEventListener("keydown", (e) => {
+  let keyValue = e.key;
+  if (keyValue >= 0 && keyValue <= 9) {
+    currentNumber += keyValue;
+    display.value = currentNumber;
+  } else if (keyValue === ".") {
+    if (!decimalPoint) {
+      currentNumber += keyValue;
+      display.value = currentNumber;
+      decimalPoint = true;
+    }
+  } else if (keyValue === "+" || keyValue === "-" || keyValue === "*" || keyValue === "/") {
+    operator = keyValue;
+    previousNumber = currentNumber;
+    currentNumber = "";
+    display.value = previousNumber + " " + operator;
+    decimalPoint = false;
+  } else if (keyValue === "=" || keyValue === "Enter") {
+    calculate();
+  } else if (keyValue === "Backspace") {
+    currentNumber = currentNumber.slice(0, -1);
+    display.value = currentNumber;
+  } else if (keyValue === "Escape") {
+    clear();
+  }
+});
+
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     let value = e.target.value;
