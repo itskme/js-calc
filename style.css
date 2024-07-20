@@ -88,4 +88,23 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #daac09;
   }
+
+  .dark-mode {
+    --background-color: #333;
+    --text-color: #fff;
+    --button-background-color: #444;
+    --button-text-color: #fff;
+    --display-background-color: #444;
+    --display-text-color: #fff;
+  }
+  
+  .dark-mode button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+  }
+  
+  .dark-mode .display {
+    background-color: var(--display-background-color);
+    color: var(--display-text-color);
+  }
   
